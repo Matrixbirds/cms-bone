@@ -13,8 +13,6 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "vue": "^2.4.2",
-    "vue-router": "^2.7.0",
     "bluebird": "^3.5.0",
     "co": "^4.6.0",
     "koa": "^2.3.0",
@@ -26,7 +24,9 @@
     "nconf-yaml": "^1.0.2",
     "newrelic": "^2.2.0",
     "pm2": "^2.6.1",
-    "rambda": "^0.8.9"
+    "rambda": "^0.8.9",
+    "vue": "^2.4.2",
+    "vue-router": "^2.7.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
