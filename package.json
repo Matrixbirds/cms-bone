@@ -5,6 +5,7 @@
   "author": "",
   "private": true,
   "scripts": {
+    "api:start": "pm2 startOrRestart server/app.yml",
     "test": "NODE_ENV=test NODE_PATH=server/__test__ nyc --reporter=html --reporter=text mocha server/__test__ --recursive --opts server/.mocharc",
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",

@@ -18,6 +18,4 @@ nconf
     .env()
     .defaults(APP_ENV);
 
-console.log(1);
-
 module.exports = nconf;
