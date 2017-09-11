@@ -1,30 +1,20 @@
 'use strict';
 
-const testHelper = require('../helper');
+const testHelper = require('helper');
+
+const {requestJson, chai} = testHelper;
+const {expect, factories} = chai;
 
 describe('Passport', function () {
-  beforeEach(function *() {
-  });
-  describe('POST /passport/login', function () {
-    it('should response ok', function *() {
-      console.log('>>>>>>>>>>>>>>.');
+    context('GET /passport/auth', function () {
+        let response;
+        beforeEach(function *() {
+            response = yield requestJson.get('/passport/auth');
+        });
+        describe('GET /passport/auth', function () {
+            it('should response 200', function *() {
+                expect(response.status).to.equal(200);
+            });
+        });
     });
-  });
 });
-
-
-describe('User', function () {
-  beforeEach(function *() {
-    console.log('user');
-  });
-  afterEach(function *() {
-    console.log('user');
-  });
-  describe('GET /users/profile', function () {
-    it('should response ok', function *() {
-      console.log('/users/profile return  ok');
-    });
-  });
-});
-
-console.log(2);

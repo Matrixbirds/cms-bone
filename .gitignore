@@ -17,3 +17,5 @@ server/.nyc_output
 server/coverage/
 server/app.yml
 server/newrelic.js
+.nyc_output/
+coverage
