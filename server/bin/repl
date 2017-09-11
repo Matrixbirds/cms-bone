@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+if (['test', 'development', 'staging'].includes(process.env.NODE_ENV)) {
+	console.log('loading factories');
+	require('../__test__/factories');
+}
+if (require.main === module) {
+	const repl = require('repl');
+	const app = require('../app');
+	app.expose(app.context, {
+		moment: require('moment'),
+		promise: require('bluebird').Promise,
+		R: require('rambda'),
+		co: require('co'),
+		MAS: require('mas-js-sdk'),
+		chai: require('chai')
+	});
+	app.expose(repl.start(':> ').context, app.context);
+}

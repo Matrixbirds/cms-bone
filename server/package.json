@@ -1,0 +1,35 @@
+{
+  "name": "cms-bone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Matrixbirds/cms-bone.git",
+  "author": "matrixbirds <yooobuntu@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "co": "^4.6.0",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-logger": "^3.0.1",
+    "koa-router": "^7.2.1",
+    "mas-js-sdk": "^0.2.13",
+    "nconf": "^0.8.4",
+    "nconf-yaml": "^1.0.2",
+    "newrelic": "^2.2.0",
+    "pm2": "^2.6.1",
+    "rambda": "^0.8.9"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test NODE_PATH=__test__ nyc --reporter=html --reporter=text mocha __test__ --recursive --opts .mocharc"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-factories": "^0.1.0",
+    "co-mocha": "^1.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.5.0",
+    "moment": "^2.18.1",
+    "nyc": "^11.2.1",
+    "supertest": "^3.0.0"
+  }
+}
