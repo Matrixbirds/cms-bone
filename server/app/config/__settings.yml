@@ -1,22 +1,22 @@
 base: &base
-    NODE_ENV: development
     app_id: test-1
     app_secret: test-key
     service:
         api: 'http://www.baidu.com'
 
 development:
-    <<: *base
+    app_id: test-1
+    app_secret: test-key
+    service:
+        api: 'http://www.baidu.com'
 
 test:
-    NODE_ENV: test
     app_id: test-1
     app_secret: test-key
     service:
         api: 'http://www.baidu.com'
 
 production:
-    <<: *base
     app_id: test-1
     app_secret: test-key
     service:

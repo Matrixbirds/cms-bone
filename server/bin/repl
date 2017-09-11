@@ -3,6 +3,7 @@ if (['test', 'development', 'staging'].includes(process.env.NODE_ENV)) {
 	console.log('loading factories');
 	require('../__test__/factories');
 }
+if (!process.env.NODE_ENV) process.env.NODE_ENV='development';
 if (require.main === module) {
 	const repl = require('repl');
 	const app = require('../app');

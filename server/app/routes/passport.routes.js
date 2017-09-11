@@ -7,7 +7,7 @@ module.exports = ({router, models}) => {
     .post('/login', async function (ctx) {
     })
     .get('/auth', async function (ctx) {
-        ctx.render({ status: 200, json: 'auth' });
+        ctx.render({ status: 200, json: { data: 'auth'} });
     });
     return router;
 };

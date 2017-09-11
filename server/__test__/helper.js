@@ -29,9 +29,9 @@ module.exports = {
 };
 
 before(function () {
-    console.log('setup');
+    // global before
 });
 
 after(function () {
-    console.log('trendown');
+    // global after
 });

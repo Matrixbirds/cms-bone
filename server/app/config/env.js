@@ -1,6 +1,6 @@
 'use strict';
-
 const nconf = require('nconf');
+const path = require('path');
 
 const APP_ENV = {
     NODE_ENV: 'development',
@@ -12,10 +12,10 @@ const APP_ENV = {
 
 nconf
     .file({
-        file: '__settings.yml',
+        file: path.join(__dirname, '__settings.yml'),
         format: require('nconf-yaml')
     })
     .env()
     .defaults(APP_ENV);
 
-module.exports = nconf;
+module.exports = nconf.get(process.env.NODE_ENV);
