@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <el-button @click="visible = true">按钮</el-button>
+    <el-dialog v-model="visible" title="hello world">
+        <p>Hello Vue ElementUI</p>
+    </el-dialog>
     <img src="./assets/logo.png">
     <router-view></router-view>
   </div>
@@ -7,7 +11,12 @@
 
 <script>
 export default {
-  name: 'app',
+    name: 'app',
+    data() {
+        return {
+            visible: false,
+        };
+    },
 };
 </script>
 
