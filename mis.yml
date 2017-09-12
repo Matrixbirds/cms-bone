@@ -1,0 +1,18 @@
+version: '3.0'
+services:
+  mysql:
+    image: mysql:5.6.36
+    ports:
+    - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD='gaming'
+    volumes:
+      - '$HOME/service/mysql/data:/var/lib/mysql:'
+  redis:
+    image: redis:3.2.8
+    ports:
+    - '6379:6379'
+  mongo:
+    image: library/mongo:3.5.7
+    ports:
+    - '27017:27017'
