@@ -3,21 +3,20 @@
         <Row class="max-height" type="flex">
             <Col :span="spanLeft" class="layout-menu-left">
                 <Menu active-name="1" theme="dark" width="auto">
-                    <div class="layout-logo-left"></div>
-                    <MenuItem name="1">
+                    <MenuItem name="0" @click.native="toggleClick">
+                        <Icon type="navicon" size="32"></Icon>
+                    </MenuItem>
+                    <MenuItem name="1" @click.native="trigerRouter('/')">
                         <Icon type="ios-navigate" :size="iconSize"></Icon>
                         <span class="layout-text">选项 1</span>
                     </MenuItem>
-                    <MenuItem name="2">
+                    <MenuItem name="3" @click.native="trigerRouter('tab2')">
                         <Icon type="ios-keypad" :size="iconSize"></Icon>
                         <span class="layout-text">选项 2</span>
                     </MenuItem>
-                    <MenuItem name="3">
+                    <MenuItem name="4" @click.native="trigerRouter('tab3')">
                         <Icon type="ios-analytics" :size="iconSize"></Icon>
                         <span class="layout-text">选项 3</span>
-                    </MenuItem>
-                    <MenuItem name="4" @click.native="toggleClick">
-                        <Icon type="navicon" size="32"></Icon>
                     </MenuItem>
                 </Menu>
             </Col>
@@ -42,7 +41,6 @@
         },
         methods: {
             toggleClick () {
-                console.log("click");
                 if (this.spanLeft === 5) {
                     this.spanLeft = 2;
                     this.spanRight = 22;
@@ -51,9 +49,8 @@
                     this.spanRight = 19;
                 }
             },
-            gotoTab1() {
-                console.log("goto tab1");
-                this.$router.push({path: '/dashboard/tab1'});
+            trigerRouter(url) {
+                this.$router.push({path: url});
             }
         }
     }

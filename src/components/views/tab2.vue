@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="layout-header">
-            
+            tab2: {{ $route.path }}
         </div>
         <div class="layout-breadcrumb max-height">
         </div>
