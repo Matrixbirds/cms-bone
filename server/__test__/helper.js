@@ -24,7 +24,7 @@ module.exports = {
     factories: require('chai-factories'),
     request,
     requestJson,
-    R: require('rambda'),
+    R: require('ramda'),
     moment: require('moment'),
 };
 

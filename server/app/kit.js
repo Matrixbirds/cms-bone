@@ -1,34 +1,41 @@
 'use strict';
+const R = require('ramda');
+const fs = require('fs');
+
 function camelCase(str) {
     const words = string => string.match(/\w+/g) || [];
-    return words(`${str}`).reduce((result, word, index) => {
+	return R.reduce((result, word, index) => {
         word = word[0].toUpperCase() + word.slice(1).toLowerCase()
-        return result + word
-    }, '');
+        return result + word;
+	}, '')(words(`${str}`));
 }
 
-const fileFormat = format => (file => (file.indexOf('.') !== 0) && (file.slice(-format.length) === format));
+const fileFormat =
+	format =>
+		(file =>
+		(file.indexOf('.') !== 0) && (file.slice(-format.length) === format)
+	);
 
 const path = require('path');
 
+const jsFile = /^(?!\\.).+js$/;
+
 function readdirSync(path) {
-    const fs = require('fs');
-    return fs
-        .readdirSync(path)
-        .filter(file => {
-            return (file.indexOf('.') !== 0) && (file !== 'index.js') && (file.slice(-3) === '.js');
-        });
+    return R.filter(file => {
+        return (file !== 'index.js') && (file.match(jsFile));
+    })(fs.readdirSync(path));
 }
 
 function importSubModule({dir, format, deps}) {
-    return readdirSync(dir)
-        .filter(fileFormat(format))
-        .reduce((res, file) => {
+    return R.pipe(
+        R.filter(fileFormat(format)),
+        R.reduce((res, file) => {
             const _module = require(path.join(dir, file));
             const name = camelCase(path.basename(file).split('.js')[0]);
             res[name] = _module(...deps);
             return res;
         }, {})
+	)(readdirSync(dir));
 }
 
 function Module({dir, format, deps}) {
@@ -38,13 +45,14 @@ function Module({dir, format, deps}) {
         'dir': dir,
     });
 
-    ['format', 'dir'].forEach((property) => {
-        Object.defineProperty(this, property, {
-            enumerable: false,
-            get: () => (__dict__[property]),
-            set: args => { Object.assign(__dict__, { [`${property}`]: args }) },
-        });
-    });
+	const addProperty = property => {
+		Object.defineProperty(this, property, {
+			enumerable: false,
+			get: () => __dict__[property],
+			set: args => { Object.assign(__dict__, { [`${property}`]: args })},
+		});
+    };
+	R.forEach(addProperty, ['format', 'dir']);
 
     Object.defineProperty(this, 'deps', {
         enumerable: false,
@@ -61,4 +69,4 @@ function Module({dir, format, deps}) {
     })
 }
 
-module.exports = args => (new Module(args))
+module.exports = args => new Module(args)

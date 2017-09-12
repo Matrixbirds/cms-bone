@@ -10,7 +10,7 @@ if (require.main === module) {
 	app.expose(app.context, {
 		moment: require('moment'),
 		promise: require('bluebird').Promise,
-		R: require('rambda'),
+		R: require('ramda'),
 		co: require('co'),
 		MAS: require('mas-js-sdk'),
 		chai: require('chai')

@@ -1,6 +1,6 @@
 'use strict';
 module.exports = ({router, models}) => {
-    router
+    return router()
     .prefix('/passport')
     .get('/', async function (ctx) {
     })
@@ -9,5 +9,4 @@ module.exports = ({router, models}) => {
     .get('/auth', async function (ctx) {
         ctx.render({ status: 200, json: { data: 'auth'} });
     });
-    return router;
 };
