@@ -12,12 +12,11 @@
     "koa-bodyparser": "^4.2.0",
     "koa-logger": "^3.0.1",
     "koa-router": "^7.2.1",
-    "mas-js-sdk": "^0.2.13",
     "nconf": "^0.8.4",
     "nconf-yaml": "^1.0.2",
     "newrelic": "^2.2.0",
     "pm2": "^2.6.1",
-    "rambda": "^0.8.9"
+    "ramda": "^0.24.1"
   },
   "scripts": {
     "test": "NODE_ENV=test NODE_PATH=__test__ nyc --reporter=html --reporter=text mocha __test__ --recursive --opts .mocharc"
@@ -29,6 +28,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
     "moment": "^2.18.1",
+    "nodemon": "^1.12.0",
     "nyc": "^11.2.1",
     "supertest": "^3.0.0"
   }

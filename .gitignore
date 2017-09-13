@@ -19,3 +19,5 @@ server/app.yml
 server/newrelic.js
 .nyc_output/
 coverage
+Dockerfile
+*.bak
