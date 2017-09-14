@@ -19,6 +19,7 @@
     "ramda": "^0.24.1"
   },
   "scripts": {
+    "dev": "NODE_ENV=development nodemon app",
     "test": "NODE_ENV=test NODE_PATH=__test__ nyc --reporter=html --reporter=text mocha __test__ --recursive --opts .mocharc"
   },
   "devDependencies": {

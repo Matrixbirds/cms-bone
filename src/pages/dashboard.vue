@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import navbar from '@/components/navbar';
+import navbar from '@/pages/navbar';
 
 export default {
     name: 'dashboard',

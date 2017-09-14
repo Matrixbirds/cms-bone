@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Dashboard from '@/components/dashboard';
-import Tab1 from '@/components/views/tab1';
-import Tab2 from '@/components/views/tab2';
-import Tab3 from '@/components/views/tab3';
+import Dashboard from '@/pages/dashboard';
+import Tab1 from '@/pages/tab1';
+import Tab2 from '@/pages/tab2';
+import Tab3 from '@/pages/tab3';
 import NotFound from '@/components/not-found';
+import iView from 'iview';
 
 Vue.use(Router);
 
@@ -33,6 +34,25 @@ const router = new Router({
             component: NotFound,
         }
     ],
+});
+
+iView.LoadingBar.config({
+	color: '#5cb85c',
+	failedColor: '#b91f1f',
+	height: 2,
+});
+
+router.beforeEach( (to, from, next) => {
+	iView.LoadingBar.start();
+	next();
+});
+
+router.afterEach( (to, from, next) => {
+	iView.LoadingBar.finish();
+	iView.Notice.open({
+		title: `${to.path}`,
+		desc: '消息'
+	});
 });
 
 export default router;

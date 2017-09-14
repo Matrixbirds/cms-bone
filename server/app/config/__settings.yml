@@ -1,10 +1,12 @@
 base: &base
     app_id: test-1
     app_secret: test-key
+    port: 3000
     service:
         api: 'http://www.baidu.com'
 
 development:
+    <<: *base
     app_id: test-1
     app_secret: test-key
     service:

@@ -1,5 +1,5 @@
 <template>
-    <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
+    <div class="layout" :class="{'layout-hide-text': spanLeft < 4}">
         <Row class="max-height" type="flex">
             <Col :span="spanLeft" class="layout-menu-left">
                 <Menu active-name="1" theme="dark" width="auto">
@@ -21,39 +21,43 @@
                 </Menu>
             </Col>
             <Col :span="spanRight">
-                <router-view></router-view>
+                <page></page>
             </Col>
         </Row>
     </div>
 </template>
 <script>
-    export default {
-        data () {
-            return {
-                spanLeft: 5,
-                spanRight: 19
+import page from '@/pages/page';
+export default {
+    components: {
+        page
+    },
+    data () {
+        return {
+            spanLeft: 4,
+            spanRight: 20
+        }
+    },
+    computed: {
+        iconSize () {
+            return this.spanLeft === 4 ? 14 : 24;
+        }
+    },
+    methods: {
+        toggleClick () {
+            if (this.spanLeft === 4) {
+                this.spanLeft = 2;
+                this.spanRight = 22;
+            } else {
+                this.spanLeft = 4;
+                this.spanRight = 20;
             }
         },
-        computed: {
-            iconSize () {
-                return this.spanLeft === 5 ? 14 : 24;
-            }
-        },
-        methods: {
-            toggleClick () {
-                if (this.spanLeft === 5) {
-                    this.spanLeft = 2;
-                    this.spanRight = 22;
-                } else {
-                    this.spanLeft = 5;
-                    this.spanRight = 19;
-                }
-            },
-            trigerRouter(url) {
-                this.$router.push({path: url});
-            }
+        trigerRouter(url) {
+            this.$router.push({path: url});
         }
     }
+}
 </script>
 <style>
     .layout{
@@ -73,6 +77,9 @@
         overflow: hidden;
         background: #fff;
         border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .layout-content-main{
         padding: 10px;

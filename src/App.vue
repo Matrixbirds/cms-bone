@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <div class="app-wrapper max-height">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
     name: 'app',
+    components: {
+    },
 };
 
 </script>

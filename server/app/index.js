@@ -35,8 +35,11 @@ staticPage.get('/', async (ctx, next) => {
 });
 app.use(staticPage.routes());
 app.use(staticPage.allowedMethods());
-if (process.env.NODE_ENV !== 'test')
-    app.listen(3000);
+if (process.env.NODE_ENV !== 'test' && require.main === module) {
+    app.listen(config.env.port, () => {
+		console.log("Listenning on %s", config.env.port);
+	});
+}
 
 module.exports = {
     expose,
